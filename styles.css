@@ -1,0 +1,88 @@
+html {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    text-align: center;
+    background-color: #404040;
+    color: white;
+    width: 100%;
+    width: 100vw;
+    height: 100%;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+#title_bar {
+    /* position */
+    position: fixed;
+
+    /* dimensions */
+    width: 100vw;
+    height: 8vh;
+    border: 1px solid white;
+    padding-top: 0;
+}
+
+#score_bar {
+    /* position */
+    position: fixed;
+
+    /* dimensions */
+    width: 54vw;
+    height: 10vh;
+    border: 1px solid red;
+
+    /* padding */
+    padding-top: 8vw;
+    padding-left: 23vw;
+    padding-right: 23vw;
+}
+
+#motivational_left {
+    /* position */
+    position: fixed;
+
+    /* dimensions */
+    width: 23vw;
+    height: 92vh;
+    /* border: 1px solid blue; */
+
+    /* padding */
+    padding-right: 77vw;
+    padding-top: 8vh;
+}
+
+#motivational_right {
+    /* position */
+    position: fixed;
+
+    /* dimensions */
+    width: 23vw;
+    height: 92vh;
+    /* border: 1px solid blue; */
+
+    /* padding */
+    padding-left: 77vw;
+    padding-top: 8vh;
+}
+
+
+#encouragement_bottom {
+    /* position */
+    position: fixed;
+
+    /* dimensions */
+    width: 54vw;
+    height: 18vh;
+    border: 1px solid green;
+
+    /* padding */
+    padding-left: 23vw;
+    padding-right: 23vw;
+    bottom: 0px;
+}
