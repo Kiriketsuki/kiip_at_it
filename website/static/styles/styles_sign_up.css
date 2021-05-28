@@ -1,0 +1,14 @@
+#main_div {
+    display: grid;
+    grid-template-areas: 
+        "top top top"
+        "mid midmid mid"
+        "bot bot bot";
+
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+}
+
+#form {
+    grid-area: midmid;
+}

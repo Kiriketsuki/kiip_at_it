@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{variables["user"].username}}'s Account page
+{% endblock %}
+
+{% block score_bar%}
+<h1>
+    Welcome {{variables["user"].username}}!
+</h1>
+{% endblock %}
+
+{% block main_content %}
+<div style = "grid-area: mid;">
+    <p>
+       Here are the details about your account: 
+    </p>
+
+    <a href = "/logout" class = "btn btn-outline-info" role = "button">
+        Logout
+    </a>
+</div>
+{% endblock %}

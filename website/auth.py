@@ -1,13 +1,25 @@
+# imports
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login.utils import logout_user
 from sqlalchemy.engine import url
+from sqlalchemy.sql import func
 from sqlalchemy.sql.functions import user
-from .models import User
+from .models import User, Note
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
 
 auth = Blueprint("auth", __name__)
+
+# default account page
+@auth.route("/account")
+def account():
+    if not current_user.is_authenticated:
+        return render_template("sign_up_login.html")
+    else:
+        variables = {"user": current_user}
+        print(func.count(current_user.notes))
+        return render_template("account.html", variables = variables)
 
 # login page
 @auth.route("/login", methods = ["GET", "POST"])
@@ -30,7 +42,7 @@ def login():
             else:
                 flash("Incorrect password, try again", category = "error")
         else:
-            flash("Email does not exist. PLease try again, or proceed to sign up", category = "error")
+            flash("Email does not exist. Please try again, or proceed to sign up", category = "error")
 
     return render_template("login.html")
 
@@ -39,8 +51,9 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash("Successfully logged out. See you again!", category = "success")
     return redirect(url_for("auth.login"))
-    
+
 # signup page
 @auth.route("/sign_up", methods = ["GET", "POST"])
 def sign_up():
@@ -69,7 +82,10 @@ def sign_up():
         else:
             new_user = User(email = email, username = username, password = generate_password_hash(password1, method = "sha256"))
             db.session.add(new_user)
-            db.session.commmit()
+            db.session.commit()
+            new_note = Note(content = "Use this website", user_id = new_user.id)
+            db.session.add(new_note)
+            db.session.commit()
             flash("Account created! Please proceed to login.", category = "success")
             return redirect(url_for("auth.login"))
 

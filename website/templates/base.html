@@ -35,11 +35,11 @@
 
                 <ul id = "opened_nav">
                     <li>
-                        <a id = "nav_home" href="#">Home</a>
+                        <a id = "nav_home" href="/">Home</a>
                     </li>
 
                     <li>
-                        <a id = "nav_account" href="#">Account</a>
+                        <a id = "nav_account" href="/account">Account</a>
                     </li>
 
                     <li>
@@ -85,17 +85,17 @@
                     {% if messages %}
                         {% for category, message in messages %}
                             {% if category == "error" %}
-                                <div class = "alert alert-danger alert-dismissable fade show" role = "alert">
+                                <div class = "alert alert-danger alert-dismissable fade show" role = "alert" style = "grid-area: mid; vertical-align: top; position: relative; z-index: 99;">
                                     {{ message }}
                                     
-                                    <button type = "button" class = "close" data-dismiss = "alert">
+                                    <button type = "button" class = "close" data-bs-dismiss = "alert">
                                         <span aria-hidden = "true">
                                             &times;
                                         </span>
                                     </button>
                                 </div>
                             {% else %}
-                                <div class = "alert alert-success alert-dismissable fade show" role = "alert">
+                                <div class = "alert alert-success alert-dismissable fade show" role = "alert" style = "grid-area: mid; vertical-align: top; position: relative; z-index: 99;">
                                     {{ message }}
                                     
                                     <button type = "button" class = "btn-close" data-bs-dismiss = "alert" aria-label = "Close">
@@ -108,7 +108,8 @@
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
-                {% block main_content%}
+
+                {% block main_content %}
                     <!-- 0th: Start using this website -->
                 {% endblock %}
             </div>
@@ -117,5 +118,6 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
         <script type = "text/javascript" src = "{{ url_for('static', filename = 'scripts/sidenav.js') }}"></script>
+        <script type = "text/javascript" src = "{{ url_for('static', filename = 'scripts/script.js') }}"></script>
     </body>
 </html>
