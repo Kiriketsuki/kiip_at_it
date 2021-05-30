@@ -15,3 +15,13 @@ function toggle_completed(note_id) {
         window.location.href = "/"
     })
 }
+
+function toggle_popup() {
+    var to_toggle = document.getElementById("pop_up");
+
+    if (to_toggle.style.display == "block") {
+        to_toggle.style.display = "none";
+    } else {
+        to_toggle.style.display = "block";
+    }
+}

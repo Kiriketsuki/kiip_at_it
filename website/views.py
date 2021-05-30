@@ -38,7 +38,7 @@ def toggle_completed():
     note = Note.query.get(note_id)
     if note:
         if note.user_id == current_user.id:
-            note.completed = True
+            note.completed = not note.completed
             db.session.commit()
 
     return jsonify({})
