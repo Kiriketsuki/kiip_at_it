@@ -25,3 +25,8 @@ function toggle_popup() {
         to_toggle.style.display = "block";
     }
 }
+
+window.onload=function () {
+    var objDiv = document.getElementById("list");
+    objDiv.scrollTop = objDiv.scrollHeight;
+}

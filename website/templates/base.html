@@ -9,10 +9,13 @@
 
         <link rel="stylesheet" href="{{ url_for('static',filename='styles/sidenav.css') }}">
         <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles_grid.css') }}">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;1,600&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap" rel="stylesheet"> 
 
         <title>
             {% block title%}
-                Kiip @ It Base
+                Kiip At It Base
             {% endblock %}
         </title>
     </head>
@@ -43,7 +46,7 @@
                     </li>
 
                     <li>
-                        <a id = "nav_about" href="#">About</a>
+                        <a id = "nav_about" href="/about">About</a>
                     </li>
                 </ul>
             </div>
@@ -79,8 +82,8 @@
                     <!-- Any progress is still progress -->
                 {% endblock %}
             </div>
-    
-            <div id = "main_content">
+
+            <div id = "messages">
                 {% with messages = get_flashed_messages(with_categories = 'true') %}
                     {% if messages %}
                         {% for category, message in messages %}
@@ -88,9 +91,9 @@
                                 <div class = "alert alert-danger alert-dismissable fade show" role = "alert" style = "grid-area: mid; vertical-align: top; position: relative; z-index: 99;">
                                     {{ message }}
                                     
-                                    <button type = "button" class = "close" data-bs-dismiss = "alert">
+                                    <button type = "button" class = "btn-close" data-bs-dismiss = "alert" aria-label = "Close">
                                         <span aria-hidden = "true">
-                                            &times;
+                                            <!-- &times; -->
                                         </span>
                                     </button>
                                 </div>
@@ -108,9 +111,17 @@
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
-
+            </div>
+    
+            <div id = "main_content">
                 {% block main_content %}
                     <!-- 0th: Start using this website -->
+                {% endblock %}
+            </div>
+
+            <div id = "buttons">
+                {% block buttons %}
+
                 {% endblock %}
             </div>
 

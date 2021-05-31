@@ -4,50 +4,49 @@
 {% endblock %}
 
 {% block title_bar %}
-    <h1 align = "center" style = "position: relative; top: 30%;">
+    <h1 align = "center" style = "position: relative; top: 30%; font-family: Raleway; font-weight: bold;"">
         Welcome to Kiip At It, {{variables['user'].username}}!
     </h1>
 {% endblock %}
 
 {% block score_bar %}
+    <p style = "font-family: Raleway; font-weight: bold;"> 
+        You have done {{variables["completed"]}} tasks! Kiip at it!
+    </p>
 {% endblock %}
 
 {% block main_content %}
-<div style = "width: 100%; min-height: 100%; grid-column: 1/4; max-height: 100%; align-self: start;">
-    <ul class = "list-group list-group-flush" style = "max-height: 100%; width: 100%;">
-        {% for note in variables['user'].notes %}
-            {% if note.completed == true %}
-            <li class = "list-group-item list-group-item-dark d-flex justify-content-between align-items-center" style = "background-color: hsl(0, 35%, 70%); width: 100%; text-decoration: line-through;" onclick = "toggle_completed({{note.id}})">
-                {{note.content}}
-                <button type = "button" class = "btn-close btn-close-white" onclick = "delete_note({{note.id}})">
-                    <span aria-hidden = "true">
-                        <!-- &times; -->
-                    </span>
-                </button>
-            </li>
-            {% else %}
-            <li class = "list-group-item list-group-item-dark d-flex justify-content-between align-items-center" style = "background-color: hsl(0, 35%, 70%); width: 100%;" onclick = "toggle_completed({{note.id}})">
-                {{note.content}}
-                <button type = "button" class = "btn-close btn-close-white" onclick = "delete_note({{note.id}})">
-                    <span aria-hidden = "true">
-                        <!-- &times; -->
-                    </span>
-                </button>
-            </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
+<ul id = "list" class = "list-group list-group-flush" style = "max-height: 100%; width: 100%;">
+    {% for note in variables['user'].notes %}
+        {% set colour = (variables["total"] - loop.index) % 360 %}
+        {% if note.completed == true %}
+        <li class = "list-group-item list-group-item-dark d-flex justify-content-between align-items-center" style = "text-shadow: 0.1px 0.1px white; background-color: #404040; color: hsl({{colour}}, 35%, 70%); width: 100%; text-decoration: line-through;" onclick = "toggle_completed({{ note.id }})">
+            {{note.content}}
+            <button type = "button" class = "btn-close btn-close-white" onclick = "delete_note({{note.id}})">
+                <span aria-hidden = "true"></span>
+            </button>
+        </li>
+        {% else %}
+        <li class = "list-group-item list-group-item-dark d-flex justify-content-between align-items-center" style = "text-shadow: 0.1px 0.1px white; background-color: #404040; color: hsl({{colour}}, 35%, 70%); width: 100%;" onclick = "toggle_completed({{note.id}})">
+            {{note.content}}
+            <button type = "button" class = "btn-close btn-close-white" onclick = "delete_note({{note.id}})">
+                <span aria-hidden = "true"></span>
+            </button>
+        </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endblock %}
 
-<a id = "pop_up_btn" style = "align-self: end; grid-column: 1/4;" onclick = "toggle_popup()" align = center class = "btn btn-outline-secondary">
+{% block buttons %}
+<a id = "pop_up_btn" onclick = "toggle_popup()" align = center class = "btn btn-outline-secondary" style = "position: relative; top: 1.5vh">
     Enter new task
 </a>
 {% endblock %}
 
 {% block pop_up %}
 <form method = "POST" style = "height: 100%;">
-    <textarea name = "note" id = "note" class = "form-control" style = "height: 90%; background-color: grey;" contenteditable = "true">
-    </textarea>
+    <textarea name = "note" id = "note" class = "form-control" style = "height: 90%; background-color: grey;" contenteditable = "true"></textarea>
 
     <br />
 
@@ -55,4 +54,10 @@
         Add Task
     </button>
 </form>
+{% endblock %}
+
+{% block encouragement_bottom %}
+<div>
+    Any progress is still progress
+</div>
 {% endblock %}
