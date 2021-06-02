@@ -24,11 +24,12 @@ def home():
                 db.session.add(new_note)
                 db.session.commit()
 
-        return render_template("home.html", variables = variables)
+        return render_template("home.html", variables = variables, user = current_user)
 
 @views.route("/about")
 def about():
-    return render_template("about.html")
+    variables = {"user": current_user}
+    return render_template("about.html", variables = variables, user = current_user)
 
 @views.route("/delete_note", methods = ["POST"])
 def delete_note():
@@ -57,6 +58,7 @@ def toggle_completed():
             else:
                 note.completed = True # after a day can still finish a task, but cannot unmark a task
 
+    db.session.commit()
     return jsonify({})
 
 

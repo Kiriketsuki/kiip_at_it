@@ -10,24 +10,24 @@
 {% endblock %}
 
 {% block score_bar %}
-    <p style = "font-family: Raleway; font-weight: bold;"> 
+    <p> 
         You have done {{variables["completed"]}} tasks! Kiip at it!
     </p>
 {% endblock %}
 
 {% block main_content %}
-<ul id = "list" class = "list-group list-group-flush" style = "max-height: 100%; width: 100%;">
+<ul id = "list" class = "list-group list-group-flush" style = "max-height: 100%; width: 100%;" onload = "scrollTop = 0">
     {% for note in variables['user'].notes %}
-        {% set colour = (variables["total"] - loop.index) % 360 %}
+        {% set colour = 15*((variables["total"] - loop.index0) % 180) %}
         {% if note.completed == true %}
-        <li class = "list-group-item list-group-item-dark d-flex justify-content-between align-items-center" style = "text-shadow: 0.1px 0.1px white; background-color: #404040; color: hsl({{colour}}, 35%, 70%); width: 100%; text-decoration: line-through;" onclick = "toggle_completed({{ note.id }})">
+        <li data-aos="fade-in" class = "list-group-item d-flex justify-content-between align-items-center" style = "text-shadow: 1px 1px black; background-color: rgba(255,255,255,0); color: hsl({{colour}}, 35%, 70%); width: 100%; text-decoration: line-through;" onclick = "toggle_completed({{ note.id }})">
             {{note.content}}
             <button type = "button" class = "btn-close btn-close-white" onclick = "delete_note({{note.id}})">
                 <span aria-hidden = "true"></span>
             </button>
         </li>
         {% else %}
-        <li class = "list-group-item list-group-item-dark d-flex justify-content-between align-items-center" style = "text-shadow: 0.1px 0.1px white; background-color: #404040; color: hsl({{colour}}, 35%, 70%); width: 100%;" onclick = "toggle_completed({{note.id}})">
+        <li data-aos="fade-in" class = "list-group-item d-flex justify-content-between align-items-center" style = "text-shadow: 1px 1px black; background-color: rgba(255,255,255,0); color: hsl({{colour}}, 35%, 70%); width: 100%;" onclick = "toggle_completed({{note.id}})">
             {{note.content}}
             <button type = "button" class = "btn-close btn-close-white" onclick = "delete_note({{note.id}})">
                 <span aria-hidden = "true"></span>
@@ -46,11 +46,15 @@
 
 {% block pop_up %}
 <form method = "POST" style = "height: 100%;">
-    <textarea name = "note" id = "note" class = "form-control" style = "height: 90%; background-color: grey;" contenteditable = "true"></textarea>
+    <textarea name = "note" id = "note" class = "form-control" style = "height: 90%; background-color: #168781;" contenteditable = "true"></textarea>
 
     <br />
+    
+    <div class = "form group" style = "display: none;">
+        Date
+    </div>
 
-    <button type = "submit" class = "btn btn-secondary" align = center>
+    <button type = "submit" class = "btn btn-secondary" style = "background-color: rgba(22,28,135,0.3)" align = center>
         Add Task
     </button>
 </form>

@@ -17,14 +17,14 @@ auth = Blueprint("auth", __name__)
 @auth.route("/account")
 def account():
     if not current_user.is_authenticated:
-        return render_template("sign_up_login.html")
+        return render_template("sign_up_login.html", user = current_user)
     else:
         variables = {"user": current_user}
         total, completed = get_user_notes(current_user.id)
         variables["total"] = total
         variables["completed"] = completed
         print(func.count(current_user.notes))
-        return render_template("account.html", variables = variables)
+        return render_template("account.html", variables = variables, user = current_user)
 
 # login page
 @auth.route("/login", methods = ["GET", "POST"])
@@ -48,8 +48,8 @@ def login():
                 flash("Incorrect password, try again", category = "error")
         else:
             flash("Email does not exist. Please try again, or proceed to sign up", category = "error")
-
-    return render_template("login.html")
+    variables = {"user": current_user}
+    return render_template("login.html", variables = variables, user = current_user)
 
 # logout button
 @auth.route("/logout")
@@ -94,8 +94,8 @@ def sign_up():
             flash("Account created! Please proceed to login.", category = "success")
             return redirect(url_for("auth.login"))
 
-
-    return render_template("sign_up.html")
+    variables = {"user": current_user}
+    return render_template("sign_up.html", variables = variables, user = current_user)
 
 def validate_password(password):
     while True:  

@@ -26,7 +26,8 @@ function toggle_popup() {
     }
 }
 
-window.onload=function () {
+
+window.onload=function() {
     var objDiv = document.getElementById("list");
-    objDiv.scrollTop = objDiv.scrollHeight;
+    objDiv.scrollTo(0,-Number.MAX_SAFE_INTEGER)
 }

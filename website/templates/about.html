@@ -3,23 +3,27 @@
 {% block title %}
 About Kiip At It
 {% endblock %}
-
 {% block title_bar %}
 
 {% endblock %}
 
+
+{% block bonus_css %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/about_wallpaper.css') }}">
+{% endblock %}
+
 {% block score_bar %}
 
-<h1 align = "center" style = "font-family: Raleway; font-weight: bold;">
+<h1 align = "center" style = "font-family: Lora; font-style: italic; font-weight: bold">
     About Kiip At It:
 </h1>
-<h2 align = "center" style = "font-family: Raleway; font-weight: bold;">
-    The thought process that went into making this website.
-</h2>
+<h3 align = "center" style = "font-family: Lora; font-size: 1.1rem; font-weight: bold">
+    The thought process that went into making this website
+</h3>
 {% endblock %}
 
 {% block main_content %}
-<div align = "center" style = "justify-content: center; width: 100%; height: 100%; font-family: Garamond; font-size: x-large">
+<div align = "center" style = "justify-content: center; width: 100%; font-family: Garamond; font-size: 0.8rem">
     <p style = "width: 100%">
         This website was created with the idea of being able to scroll back and look at all the progress you have done and come so far. Every time I would create a to-do list, as soon as I am done checking off that to-do list, I would delete or throw it away entirely.
         After the to-do list has been thrown away, I will not be able to look back, and see all the things that I have done. On days where I feel like I have not been productive, I want to be able to scroll back through my life, see a rainbow of colours, and see how far I have come, and
