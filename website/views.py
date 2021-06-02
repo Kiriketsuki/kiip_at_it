@@ -35,7 +35,7 @@ def delete_note():
     data = json.loads(request.data)
     note_id = data["note_id"]
     note = Note.query.get(note_id)
-    toggle_modifiability(note_id)
+    update_modifiability(note_id)
     if note:
         if note.user_id == current_user.id:
             if note.modifiable == True:
@@ -49,12 +49,13 @@ def toggle_completed():
     data = json.loads(request.data)
     note_id = data["note_id"]
     note = Note.query.get(note_id)
-    toggle_modifiability(note_id)
+    update_modifiability(note_id)
     if note:
         if note.user_id == current_user.id:
             if note.modifiable == True:
-                note.completed = not note.completed
-                db.session.commit()
+                note.completed = not note.completed # within a day still can mark the task and unmark
+            else:
+                note.completed = True # after a day can still finish a task, but cannot unmark a task
 
     return jsonify({})
 
@@ -70,7 +71,7 @@ def get_user_notes(user_id):
 
     return total, completed
 
-def toggle_modifiability(note_id):
+def update_modifiability(note_id):
     note = Note.query.get(note_id)
     difference = datetime.now() - note.date
     if difference.days > 1:
