@@ -6,6 +6,7 @@
     --transition-speed: 600ms;
     text-shadow: 1px 1px black;
 }
+
 html {
     /* background-color: #404040; */
     background: url(wallpapers/wallpaper_1.png) no-repeat center center fixed;

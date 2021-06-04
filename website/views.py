@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from flask_login import login_required, current_user
 from .models import Note, User
 from . import db
-from datetime import datetime
+from datetime import datetime, timedelta
 views = Blueprint("views", __name__)
 
 @views.route("/", methods = ["GET", "POST"])
@@ -76,6 +76,6 @@ def get_user_notes(user_id):
 def update_modifiability(note_id):
     note = Note.query.get(note_id)
     difference = datetime.now() - note.date
-    if difference.days > 1:
+    if difference.days >= 1:
         note.modifiable = False
         db.session.commit()
