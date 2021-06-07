@@ -4,6 +4,10 @@
 Account for Kiip At It!
 {% endblock %}
 
+{% block bonus_css %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/sign_up_login_wallpaper.css') }}">
+{% endblock %}
+
 {% block main_content %} 
 <div style="grid-area: mid; display:grid; grid-template-columns: 5fr 2fr 5fr; grid-template-rows: 5fr 0.5fr 2fr;">
     <h4 align = "center" style = "grid-column: 1/4; grid-row: 1; font-family: Lora; font-weight: bold;">

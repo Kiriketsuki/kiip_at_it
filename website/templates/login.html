@@ -10,6 +10,10 @@ Login for Kiip At It!
     Login
 </h3>
 
+{% block bonus_css %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/login_wallpaper.css') }}">
+{% endblock %}
+
 <br />
 
 <div id = "main_div" style = "display: flex; flex-direction: column; align-items: center; justify-content: center;">

@@ -3,6 +3,10 @@
     Kiip At It!
 {% endblock %}
 
+{% block bonus_css %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/home_wallpaper.css') }}">
+{% endblock %}
+
 {% block title_bar %}
     <h1 align = "center" style = "position: relative; top: 30%; font-family: Raleway; font-weight: bold;"">
         Welcome to Kiip At It, {{variables['user'].username}}!
@@ -39,14 +43,14 @@
 {% endblock %}
 
 {% block buttons %}
-<a id = "pop_up_btn" onclick = "toggle_popup()" align = center class = "btn btn-outline-secondary" style = "position: relative; top: 1.5vh">
+<a id = "pop_up_btn" onclick = "toggle_popup()" align = center class = "btn btn-outline-secondary" style = "position: relative; top: 1.5vh; background-color: rgba(46, 49, 49, 0.7)">
     Enter new task
 </a>
 {% endblock %}
 
 {% block pop_up %}
 <form method = "POST" style = "height: 100%;">
-    <textarea name = "note" id = "note" class = "form-control" style = "height: 90%; background-color: #168781;" contenteditable = "true"></textarea>
+    <textarea name = "note" id = "note" class = "form-control" style = "height: 90%; background-color: rgba(108, 122, 137, 0.9);" contenteditable = "true"></textarea>
 
     <br />
     
@@ -54,7 +58,7 @@
         Date
     </div>
 
-    <button type = "submit" class = "btn btn-secondary" style = "background-color: rgba(22,28,135,0.3)" align = center>
+    <button type = "submit" class = "btn btn-secondary" style = "background-color: rgba(46, 49, 49, 0.8)" align = center>
         Add Task
     </button>
 </form>

@@ -12,10 +12,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;1,600&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400;1,500;1,700&display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles_grid.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
 
         {% if not user.is_authenticated %}
-        <link rel="stylesheet" href="{{ url_for('static',filename='styles/alt_wallpaper.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/main_wallpaper.css') }}">
         {% endif %}
 
         {% block bonus_css %}
