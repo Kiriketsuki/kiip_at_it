@@ -260,9 +260,10 @@ ul {
     font-size: 1.5rem;
     letter-spacing: 0.3ch;
     width: 100%;
+    /* padding-left: 0.4vw; */
 }
 
-.navbar:hover .logo svg {
+.navbar:hover .logo img {
     transform: rotate(-360deg);
 }
 
@@ -272,11 +273,11 @@ ul {
     margin: 1.5rem;
 }
 
-.logo i {
+.logo img {
     font-size: 2rem;
     transform: rotate(0deg);
-    transition: transform var(--transition-speed);
-    margin: 0.8vw;
+    transition: transform 450ms;
+    margin: 0.79vw;
 }
 
 .navbar:hover .logo i {
